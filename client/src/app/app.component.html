@@ -5,5 +5,10 @@
 </div>
 
 <div class="game">
-  <ccg-level></ccg-level>
+
+  <button *ngIf="!play" (click)="play = true">
+    play
+  </button>
+
+  <ccg-level *ngIf="play"></ccg-level>
 </div>

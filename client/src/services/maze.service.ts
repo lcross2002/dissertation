@@ -23,8 +23,8 @@ interface coord {
 
 @Injectable({providedIn: 'root'})
 export class MazeService {
-  maze?: Maze;
-  fogMaze?: FogMaze;
+  maze!: Maze;
+  fogMaze!: FogMaze;
 
   private maze1: Maze = [
     [1, 1, 1, 1, 1, 3, 1],
