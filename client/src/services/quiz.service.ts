@@ -23,6 +23,6 @@ export class QuizService {
   }
 
   private generateQuiz(): quiz {
-    return this.quizzes[this.quizIndex++];
+    return this.quizzes[this.quizIndex];
   }
 }
