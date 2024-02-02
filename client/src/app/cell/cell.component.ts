@@ -15,4 +15,10 @@ export class CellComponent {
   @Input() cell!: CellType;
 
   constructor(public maze: MazeService) {}
+
+  cellClick() {
+    if (this.cell === CellType.empty) {
+      this.maze.updateFog(this.i, this.j);
+    }
+  }
 }

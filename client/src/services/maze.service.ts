@@ -85,4 +85,24 @@ export class MazeService {
 
     this.fogMaze = fog as FogMaze;
   }
+
+  updateFog(i: number, j: number) {
+    const left: coord = {i: i, j: j-1};
+    const right: coord = {i: i, j: j+1};
+    const up: coord = {i: i+1, j: j};
+    const down: coord = {i: i-1, j: j};
+
+    if (this.fogMaze[left.i][left.j])
+      this.fogMaze[left.i][left.j] = false;
+
+    if (this.fogMaze[right.i][right.j])
+      this.fogMaze[right.i][right.j] = false;
+
+    if (this.fogMaze[up.i][up.j])
+      this.fogMaze[up.i][up.j] = false;
+
+    if (this.fogMaze[down.i][down.j])
+      this.fogMaze[down.i][down.j] = false;
+
+  }
 }

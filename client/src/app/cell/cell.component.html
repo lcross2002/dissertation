@@ -1,7 +1,11 @@
-<button *ngIf="!maze.fogMaze[i][j]">
-  {{cell}} n
-</button>
+<button (click)="cellClick()">
 
-<button *ngIf="maze.fogMaze[i][j]">
-  {{cell}} f
+  <span *ngIf="!maze.fogMaze[i][j]">
+    {{cell}}
+  </span>
+
+  <span *ngIf="maze.fogMaze[i][j]">
+    fog
+  </span>
+
 </button>
