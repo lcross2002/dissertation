@@ -1,0 +1,37 @@
+.overlay {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(78, 68, 68, 0.5);
+  z-index: 2;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.box {
+  width: 40vw;
+  height: 75vh;
+  background-color: white;
+  border-radius: 16px;
+  position: relative;
+}
+
+.close {
+  width: 48px;
+  height: 48px;
+  position: absolute;
+  right: 0;
+  background-color: darkblue;
+  color: white;
+}
+
+.content {
+  display: flex;
+  justify-content: center;
+}
