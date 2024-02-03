@@ -11,6 +11,10 @@
   height: 64px;
 }
 
+.clickable {
+  filter: brightness(75%);
+}
+
 .clickable:hover {
   filter: brightness(50%);
 }
