@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnDestroy } from '@angular/core';
+import { Component, HostListener, OnDestroy } from '@angular/core';
 import { QuizService } from '../../services/quiz.service';
 import { Subscription } from 'rxjs';
 
@@ -24,6 +24,12 @@ export class QuizComponent implements OnDestroy {
 
   close() {
     this.open = false;
+  }
+
+  @HostListener('document:keydown.escape', ['$event'])
+  onKeydownHandler(event: KeyboardEvent) {
+    if (event.key === 'Escape' && this.open)
+      this.open = false;
   }
 
   ngOnDestroy() {
