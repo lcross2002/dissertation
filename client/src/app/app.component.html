@@ -8,9 +8,34 @@
 
 <div class="game">
 
-  <button *ngIf="!play" (click)="play = true">
-    play
-  </button>
+  <div *ngIf="!play">
+    <div class="instruction-list">
+      <div class="instructions">
+        <span>How to Play:</span>
+      </div>
+      <div class="instructions">
+        <span class="instruction">Click the tiles to traverse the maze</span>
+        <img width="32" height="32" src="../assets/door.png">
+      </div>
+      <div class="instructions">
+        <span class="instruction">Overcome the obstacles by solving code conventions</span>
+        <img width="32" height="32" src="../assets/door.png">
+      </div>
+      <div class="instructions">
+        <span class="instruction">Find the key</span>
+        <img width="32" height="32" src="../assets/door.png">
+      </div>
+      <div class="instructions">
+        <span class="instruction">Reach the door to win!</span>
+        <img width="32" height="32" src="../assets/door.png">
+      </div>
+    </div>
+
+    <div class="instructions">
+      <button (click)="play = true">play</button>
+    </div>
+
+  </div>
 
   <ccg-level *ngIf="play"></ccg-level>
 </div>

@@ -11,6 +11,21 @@
 }
 
 .game {
+  margin-top: 16px;
   display: flex;
   justify-content: center;
+}
+
+.instruction-list {
+  margin-bottom: 16px;
+}
+
+.instructions {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.instruction {
+  margin-right: 8px;
 }

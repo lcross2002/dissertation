@@ -1,11 +1,29 @@
-<button (click)="cellClick()">
-
+<!-- <div class="cell" (click)="cellClick()">
   <span *ngIf="!maze.fogMaze[i][j]">
-    {{cell}}
+    
+    <span *ngIf="cell !== cellType.exit">
+      {{cell}} {{clicked}}
+    </span>
+
+    <span>
+      <img height="64" width="64" src="../../assets/door.png" *ngIf="cell === cellType.exit">
+    </span>
+
+
   </span>
 
   <span *ngIf="maze.fogMaze[i][j]">
     fog
   </span>
+</div> -->
 
-</button>
+<div class="cell" (click)="cellClick()">
+  <div *ngIf="!maze.fogMaze[i][j]">
+    <img height="64" width="64" *ngIf="cell !== cellType.exit">
+    <img height="64" width="64" src="../../assets/door.png" *ngIf="cell === cellType.exit">
+  </div>
+
+  <div *ngIf="maze.fogMaze[i][j]">
+    <img height="64" width="64">
+  </div>
+</div>
