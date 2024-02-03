@@ -17,6 +17,10 @@ export class CellComponent {
 
   cellType = CellType;
   
+  get clickable() {
+    return !this.clicked && this.maze.isAdjacentToClicked(this.i, this.j);
+  }
+
   get clicked() {
     return this.maze.clickedMaze[this.i][this.j];
   }
