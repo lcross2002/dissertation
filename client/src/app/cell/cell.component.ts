@@ -40,4 +40,9 @@ export class CellComponent {
       this.quiz.openQuiz();
     }
   }
+
+  keyPress(ev: KeyboardEvent) {
+    if (ev.key === 'Enter')
+      this.cellClick();
+  }
 }
