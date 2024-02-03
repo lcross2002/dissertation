@@ -1,3 +1,3 @@
-<div *ngFor="let row of maze.maze; index as i">
-  <ccg-cell *ngFor="let cell of row; index as j" [i]="i" [j]="j" [cell]="cell"></ccg-cell>
+<div style="height: 64px;" *ngFor="let row of maze.maze; index as i">
+  <ccg-cell class="size" *ngFor="let cell of row; index as j" [i]="i" [j]="j" [cell]="cell"></ccg-cell>
 </div>

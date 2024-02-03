@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CellType, MazeService } from '../../services/maze.service';
 import { QuizService } from '../../services/quiz.service';
 
@@ -10,28 +10,28 @@ import { QuizService } from '../../services/quiz.service';
   templateUrl: './cell.component.html',
   styleUrl: './cell.component.scss'
 })
-export class CellComponent implements OnInit {
+export class CellComponent {
   @Input() i!: number;
   @Input() j!: number;
   @Input() cell!: CellType;
 
   cellType = CellType;
-  clicked: boolean = false;
+  
+  get clicked() {
+    return this.maze.clickedMaze[this.i][this.j];
+  }
 
   constructor(
     public maze: MazeService,
     public quiz: QuizService,
   ) {}
 
-  ngOnInit() {
-    if (this.cell === CellType.entrance)
-      this.clicked = true;
-  }
-
   cellClick() {
+    if (!this.maze.isAdjacentToClicked(this.i, this.j))
+      return;
+
     if (this.cell === CellType.empty) {
       this.maze.updateFog(this.i, this.j);
-      this.clicked = true;
     } else if (this.cell === CellType.puzzle) {
       this.quiz.openQuiz();
     }

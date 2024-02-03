@@ -16,6 +16,9 @@ export type Maze = [MazeLine, MazeLine, MazeLine, MazeLine, MazeLine, MazeLine, 
 export type FogLine = [boolean, boolean, boolean, boolean, boolean, boolean, boolean];
 export type FogMaze = [FogLine, FogLine, FogLine, FogLine, FogLine, FogLine, FogLine];
 
+export type ClickedLine = [boolean, boolean, boolean, boolean, boolean, boolean, boolean];
+export type ClickedMaze = [ClickedLine, ClickedLine, ClickedLine, ClickedLine, ClickedLine, ClickedLine, ClickedLine];
+
 interface coord {
   i: number;
   j: number
@@ -25,6 +28,7 @@ interface coord {
 export class MazeService {
   maze!: Maze;
   fogMaze!: FogMaze;
+  clickedMaze!: ClickedMaze;
 
   private maze1: Maze = [
     [1, 1, 1, 1, 1, 3, 1],
@@ -39,6 +43,7 @@ export class MazeService {
   generateMaze() {
     this.maze = this.maze1;
     this.generateFogMaze();
+    this.generateClickedMaze();
   }
 
   private generateFogMaze() {
@@ -86,7 +91,25 @@ export class MazeService {
     this.fogMaze = fog as FogMaze;
   }
 
+  generateClickedMaze() {
+    const clicked: boolean[][] = [...Array(7)].map(e => Array(7));
+
+    this.maze.forEach((line, i) => {
+      line.forEach((cell, j) => {
+        if (cell === CellType.entrance) {
+          clicked[i][j] = true;
+        } else {
+          clicked[i][j] = false;
+        }
+      });
+    });
+
+    this.clickedMaze = clicked as ClickedMaze;
+  }
+
   updateFog(i: number, j: number) {
+    this.clickedMaze[i][j] = true;
+
     const left: coord = {i: i, j: j-1};
     const right: coord = {i: i, j: j+1};
     const up: coord = {i: i+1, j: j};
@@ -103,6 +126,26 @@ export class MazeService {
 
     if (this.fogMaze[down.i][down.j])
       this.fogMaze[down.i][down.j] = false;
+  }
 
+  isAdjacentToClicked(i: number, j: number): boolean {
+    const left: coord = {i: i, j: j-1};
+    const right: coord = {i: i, j: j+1};
+    const up: coord = {i: i+1, j: j};
+    const down: coord = {i: i-1, j: j};
+
+    if (this.clickedMaze[left.i][left.j])
+      return true;
+
+    if (this.clickedMaze[right.i][right.j])
+      return true;
+
+    if (this.clickedMaze[up.i][up.j])
+      return true;
+
+    if (this.clickedMaze[down.i][down.j])
+      return true;
+
+    return false;
   }
 }

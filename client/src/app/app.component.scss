@@ -1,13 +1,15 @@
 .header {
     width: 100vw;
     height: 10vh;
-    background-color: blue;
+    background-color: var(--dark);
     display: flex;
     justify-content: center;
 }
 
 .title {
     align-self: center;
+    color: white;
+    font-size: 32px;
 }
 
 .game {
@@ -18,14 +20,31 @@
 
 .instruction-list {
   margin-bottom: 16px;
+  padding: 8px;
+  border-radius: 16px;
+  border: 1px solid var(--off-dark);
 }
 
 .instructions {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 8px;
 }
 
 .instruction {
   margin-right: 8px;
+}
+
+.play-button {
+  font-size: 24px;
+  padding: 12px 24px;
+  background-color: var(--off-light);
+  border-radius: 8px;
+  border-color: var(--off-dark);
+}
+
+.play-button:hover {
+  background-color: var(--dark);
+  color: white;
 }
