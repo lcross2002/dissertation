@@ -13,7 +13,7 @@
         <div class="answers">
 
           <div *ngFor="let answer of multiQuiz.answers">
-            <button class="answer" (click)="multiClick(answer.id)">
+            <button class="answer" [disabled]="isDisabled(answer.id)" (click)="multiClick(answer.id)" [ngClass]="{'pointer': !isDisabled(answer.id) }">
               {{answer.value}}
             </button>
           </div>

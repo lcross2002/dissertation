@@ -20,6 +20,7 @@ export class QuizComponent implements OnDestroy {
   private i?: number;
   private j?: number;
 
+  private disabled: string[] = [];
   private subscription: Subscription;
 
   constructor(
@@ -35,6 +36,7 @@ export class QuizComponent implements OnDestroy {
         this.multiQuiz = undefined;
       }
 
+      this.disabled = [];
       this.i = q.i;
       this.j = q.j;
       this.open = true;
@@ -52,7 +54,13 @@ export class QuizComponent implements OnDestroy {
       this.maze.maze[this.i][this.j] = CellType.empty;
       this.quiz.quizIndex++;
       this.close();
+    } else {
+      this.disabled.push(id);
     }
+  }
+
+  isDisabled(id: string) {
+    return this.disabled.includes(id);
   }
 
   @HostListener('document:keydown.escape', ['$event'])
