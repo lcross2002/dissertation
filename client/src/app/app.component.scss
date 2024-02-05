@@ -45,7 +45,9 @@
 }
 
 .play-button:hover {
+  cursor: pointer;
   background-color: var(--dark);
+  border-color: var(--off-light);
   color: white;
 }
 

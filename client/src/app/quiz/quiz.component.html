@@ -2,7 +2,28 @@
   <div class="box">
     <button class="close" (click)="close()">X</button>
     <div class="content">
-      <span>quiz time!</span>
+      <div class="header">
+        <span>Quiz Time!</span>
+      </div>
+
+      <div class="multi" *ngIf="multiQuiz">
+        <div class="question">
+          {{multiQuiz.question}}
+        </div>
+        <div class="answers">
+
+          <div *ngFor="let answer of multiQuiz.answers">
+            <button class="answer" (click)="multiClick(answer.id)">
+              {{answer.value}}
+            </button>
+          </div>
+
+        </div>
+      </div>
+
+      <div *ngIf="fillQuiz">
+
+      </div>
     </div>
   </div>
 </div>
