@@ -36,6 +36,10 @@ export class QuizService {
   quizIndex: number = 0;
   open$: Observable<IQuiz>;
   private openSubject: Subject<IQuiz>;
+  
+  close$: Observable<void>;
+  private closeSubject: Subject<void>;
+
   private quizzes: Quiz[] = [
     {
       quizType: 'multi',
@@ -55,11 +59,18 @@ export class QuizService {
     this.openSubject = new Subject();
     this.open$ = this.openSubject.asObservable();
 
+    this.closeSubject = new Subject();
+    this.close$ = this.closeSubject.asObservable();
+
     this.shuffleArray(this.quizzes);
   }
 
   openQuiz(i: number, j: number) {
     this.openSubject.next({ quiz: this.generateQuiz(), i, j });
+  }
+
+  closeQuiz() {
+    this.closeSubject.next();
   }
 
   private shuffleArray(array: Quiz[]) {

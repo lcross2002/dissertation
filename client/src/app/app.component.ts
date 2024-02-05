@@ -4,11 +4,12 @@ import { LevelComponent } from './level/level.component';
 import { QuizComponent } from './quiz/quiz.component';
 import { Subscription } from 'rxjs';
 import { MazeService } from '../services/maze.service';
+import { EndComponent } from './end/end.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, LevelComponent, QuizComponent],
+  imports: [CommonModule, LevelComponent, QuizComponent, EndComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })

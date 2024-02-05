@@ -21,13 +21,14 @@ export class QuizComponent implements OnDestroy {
   private j?: number;
 
   private disabled: string[] = [];
-  private subscription: Subscription;
+  private openSubscription: Subscription;
+  private closeSubscription: Subscription;
 
   constructor(
     public quiz: QuizService,
     public maze: MazeService
   ) {
-    this.subscription = this.quiz.open$.subscribe((q) => {
+    this.openSubscription = this.quiz.open$.subscribe((q) => {
       if (q.quiz.quizType === 'multi') {
         this.multiQuiz = q.quiz;
         this.fillQuiz = undefined;
@@ -41,6 +42,8 @@ export class QuizComponent implements OnDestroy {
       this.j = q.j;
       this.open = true;
     });
+
+    this.closeSubscription = this.quiz.close$.subscribe(() => this.close());
   }
 
   close() {
@@ -71,6 +74,7 @@ export class QuizComponent implements OnDestroy {
   }
 
   ngOnDestroy() {
-    this.subscription.unsubscribe();
+    this.openSubscription.unsubscribe();
+    this.closeSubscription.unsubscribe();
   }
 }

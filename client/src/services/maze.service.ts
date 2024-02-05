@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
+import { QuizService } from './quiz.service';
+import { EndService } from './end.service';
 
 export enum CellType {
   empty,
@@ -27,6 +29,7 @@ interface coord {
 
 @Injectable({providedIn: 'root'})
 export class MazeService {
+  score: number = 0;
   lives: boolean[] = [true, true, true];
   hasKey: boolean = false;
   bonus: coord[] = [];
@@ -37,7 +40,10 @@ export class MazeService {
   startLevel$: Observable<void>;
   private startLevelSubject: Subject<void>;
 
-  constructor() {
+  constructor(
+    private quiz: QuizService,
+    private end: EndService
+  ) {
     this.startLevelSubject = new Subject();
     this.startLevel$ = this.startLevelSubject.asObservable();
   }
@@ -188,10 +194,14 @@ export class MazeService {
   }
 
   subtractLife() {
-    this.lives.pop();;
+    this.lives.pop();
 
     if (this.lives.length === 0) {
-      // lose
+      this.quiz.closeQuiz();
+      this.end.end({
+        outcome: 'lose',
+        score: this.score
+      });
     }
   }
 }
