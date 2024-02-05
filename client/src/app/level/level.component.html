@@ -2,6 +2,9 @@
   <ccg-cell class="size" *ngFor="let cell of row; index as j" [i]="i" [j]="j" [cell]="cell"></ccg-cell>
 </div>
 
-<div>
-  Key Collected: {{ maze.hasKey ? 'Y' : 'N' }}
+<div class="inventory">
+  <span>Inventory:</span>
+  <div class="items">
+    <img width="32" height="32" *ngIf="maze.hasKey" src="assets/big_key.png">
+  </div>
 </div>

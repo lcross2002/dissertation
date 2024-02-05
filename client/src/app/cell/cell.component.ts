@@ -41,6 +41,7 @@ export class CellComponent {
     } else if(this.cell === CellType.key) {
       this.maze.hasKey = true;
       this.maze.clickedMaze[this.i][this.j] = true;
+      this.maze.updateFog(this.i, this.j);
     } else if (this.cell === CellType.exit) {
       if (this.maze.hasKey)
         alert('you win!');
