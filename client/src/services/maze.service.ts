@@ -48,6 +48,12 @@ export class MazeService {
     this.startLevel$ = this.startLevelSubject.asObservable();
   }
 
+  startGame() {
+    this.score = 0;
+    this.lives = [true, true, true];
+    this.startLevel();
+  }
+
   startLevel() {
     this.startLevelSubject.next();
   }

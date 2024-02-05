@@ -16,9 +16,53 @@
 
 .box {
   width: 30vw;
-  height: 50vh;
+  height: 40vh;
   background-color: white;
   // border-radius: 16px;
   border: 2px solid black;
   position: relative;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  width: 100%;
+  justify-content: center;
+  background-color: var(--off-off-light);
+  // border-radius: 16px 0 0 0;
+
+  margin-bottom: 16px;
+  border-bottom: 2px solid black;
+}
+
+.score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 28px;
+  padding-bottom: 8px;
+}
+
+.play-button {
+  font-size: 24px;
+  padding: 12px 24px;
+  background-color: var(--off-light);
+  border-radius: 8px;
+  border-color: var(--off-dark);
+}
+
+.play-button:hover {
+  cursor: pointer;
+  background-color: var(--dark);
+  border-color: var(--off-light);
+  color: white;
 }

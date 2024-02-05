@@ -1,5 +1,24 @@
 <div class="overlay" *ngIf="val">
   <div class="box">
-    yea
+    <div class="content">
+      <div class="header">
+        {{ val.outcome === 'win' ? 'You win! :)' : 'You Lose :(' }}
+      </div>
+
+      <div class="score">
+        <div>
+          Score Achieved:
+        </div>
+  
+        <div>
+          {{val.score}}
+        </div>
+      </div>
+
+      <div>
+        <button class="play-button" (click)="play()">play again?</button>
+      </div>
+
+    </div>
   </div>
 </div>

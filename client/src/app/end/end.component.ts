@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnDestroy } from '@angular/core';
 import { EndService, IEnd } from '../../services/end.service';
 import { Subscription } from 'rxjs';
+import { MazeService } from '../../services/maze.service';
 
 @Component({
   selector: 'ccg-end',
@@ -16,10 +17,18 @@ export class EndComponent implements OnDestroy {
 
   private subscription: Subscription;
   
-  constructor(public end: EndService) {
+  constructor(
+    private maze: MazeService,
+    public end: EndService
+  ) {
     this.subscription = this.end.end$.subscribe((val) => {
       this.val = val;
     });
+  }
+
+  play() {
+    this.maze.startGame();
+    this.val = undefined;
   }
 
   ngOnDestroy() {
