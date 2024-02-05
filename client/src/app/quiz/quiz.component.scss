@@ -72,8 +72,13 @@
   background-color: var(--off-light);
   margin-bottom: 16px;
   border-radius: 12px;
-  padding-left: 8px;
+  padding: 8px 8px 16px 8px;
   font-size: 20px;
+}
+
+.code {
+  background-color: white;
+  padding: 8px;
 }
 
 .answers {

@@ -10,6 +10,7 @@ export interface IMultiAnswer {
 export interface IMultiQuiz {
   quizType: 'multi';
   question: string;
+  code: string;
   answers: IMultiAnswer[];
   correctId: string;
 }
@@ -38,14 +39,15 @@ export class QuizService {
   private quizzes: Quiz[] = [
     {
       quizType: 'multi',
-      question: 'test',
+      question: 'Which comment should be added to this line of code:',
+      code: 'i++;',
       answers: [
-        {id: 'A', value: 'test'},
-        {id: 'B', value: 'test'},
-        {id: 'C', value: 'test'},
-        {id: 'D', value: 'test'}
+        {id: 'A', value: '// Increment i by 1'},
+        {id: 'B', value: 'No comment should be added'},
+        {id: 'C', value: '// Increase the i value by 1'},
+        {id: 'D', value: '/** Increment i */'}
       ],
-      correctId: 'A'
+      correctId: 'B'
     }
   ];
   
