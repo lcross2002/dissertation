@@ -30,13 +30,14 @@ interface coord {
 @Injectable({providedIn: 'root'})
 export class MazeService {
   score: number = 0;
+  maxScore: number = 250;
   lives: boolean[] = [true, true, true];
   hasKey: boolean = false;
   bonus: coord[] = [];
   maze!: Maze;
   fogMaze!: FogMaze;
   clickedMaze!: ClickedMaze;
-
+  
   startLevel$: Observable<void>;
   private startLevelSubject: Subject<void>;
 
@@ -209,5 +210,19 @@ export class MazeService {
         score: this.score
       });
     }
+  }
+
+  increaseScore(val: number) {
+    this.score += val;
+
+    if (this.score >= this.maxScore)
+      this.win();
+  }
+
+  private win() {
+    this.end.end({
+      outcome: 'win',
+      score: this.score
+    });
   }
 }

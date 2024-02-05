@@ -45,13 +45,14 @@ export class CellComponent {
       this.maze.updateFog(this.i, this.j);
     } else if (this.cell === CellType.exit) {
       if (this.maze.hasKey) {
-        alert('you win!');
+        this.maze.increaseScore(10);
         this.maze.startLevel();
       }
     } else if (this.cell === CellType.bonus) {
       this.collectedBonus = true;
       this.maze.updateFog(this.i, this.j);
       this.maze.bonus.push({ i: this.i, j: this.j });
+      this.maze.increaseScore(10);
     }
   }
 

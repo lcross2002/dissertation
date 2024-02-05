@@ -35,13 +35,15 @@
         <img width="32" height="32" src="assets/door.png">
       </div>
       <div class="instructions">
-        <span class="instruction">Reach x score to win!</span>
+        <span class="instruction-score">Reach</span>
+        <input class="score" type="text" [formControl]="scoreForm">
+        <span class="instruction-score-left">score to win!</span>
         <!-- <img width="32" height="32" src="assets/door.png"> -->
       </div>
     </div>
 
     <div class="instructions">
-      <button class="play-button" (click)="play = true">play</button>
+      <button class="play-button" [disabled]="scoreForm.errors" (click)="start()">play</button>
     </div>
 
   </div>
