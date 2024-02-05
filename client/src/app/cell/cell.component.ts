@@ -16,6 +16,7 @@ export class CellComponent {
   @Input() cell!: CellType;
 
   cellType = CellType;
+  collectedBonus: boolean = false;
   
   get clickable() {
     return !this.clicked && this.maze.isAdjacentToClicked(this.i, this.j);
@@ -43,8 +44,14 @@ export class CellComponent {
       this.maze.clickedMaze[this.i][this.j] = true;
       this.maze.updateFog(this.i, this.j);
     } else if (this.cell === CellType.exit) {
-      if (this.maze.hasKey)
+      if (this.maze.hasKey) {
         alert('you win!');
+        this.maze.startLevel();
+      }
+    } else if (this.cell === CellType.bonus) {
+      this.collectedBonus = true;
+      this.maze.updateFog(this.i, this.j);
+      this.maze.bonus.push({ i: this.i, j: this.j });
     }
   }
 

@@ -6,5 +6,9 @@
   <span>Inventory:</span>
   <div class="items">
     <img width="32" height="32" *ngIf="maze.hasKey" src="assets/big_key.png">
+
+    <div *ngFor="let item of maze.bonus">
+      <img width="32" height="32" src="assets/big_bonus.png">
+    </div>
   </div>
 </div>

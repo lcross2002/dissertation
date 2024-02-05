@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
 
 export enum CellType {
   empty,
@@ -27,9 +28,13 @@ interface coord {
 @Injectable({providedIn: 'root'})
 export class MazeService {
   hasKey: boolean = false;
+  bonus: coord[] = [];
   maze!: Maze;
   fogMaze!: FogMaze;
   clickedMaze!: ClickedMaze;
+
+  startLevel$: Observable<void>;
+  private startLevelSubject: Subject<void>;
 
   private maze1: Maze = [
     [1, 1, 1, 1, 1, 3, 1],
@@ -41,11 +46,40 @@ export class MazeService {
     [1, 1, 1, 1, 1, 2, 1]
   ];
 
+  constructor() {
+    this.startLevelSubject = new Subject();
+    this.startLevel$ = this.startLevelSubject.asObservable();
+  }
+
+  startLevel() {
+    this.startLevelSubject.next();
+  }
+
   generateMaze() {
-    this.maze = this.maze1;
+    const { mazes, length } = this.generateMazes();
+    this.maze = mazes[Math.floor(Math.random() * length)];
     this.hasKey = false;
+    this.bonus = [];
     this.generateFogMaze();
     this.generateClickedMaze();
+  }
+
+  private generateMazes(): {mazes: Maze[], length: number} {
+    const mazes: Maze[] = [[
+      [1, 1, 1, 1, 1, 3, 1],
+      [1, 5, 0, 0, 1, 0, 1],
+      [1, 1, 1, 0, 1, 0, 1],
+      [1, 6, 0, 0, 1, 0, 1],
+      [1, 1, 1, 0, 1, 0, 1],
+      [1, 4, 0, 0, 0, 0, 1],
+      [1, 1, 1, 1, 1, 2, 1]
+    ]];
+
+    const length = mazes.length;
+
+    return {
+      mazes, length
+    }
   }
 
   private generateFogMaze() {

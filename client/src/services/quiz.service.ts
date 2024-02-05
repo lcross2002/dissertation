@@ -52,13 +52,25 @@ export class QuizService {
   constructor() {
     this.openSubject = new Subject();
     this.open$ = this.openSubject.asObservable();
+
+    this.shuffleArray(this.quizzes);
   }
 
   openQuiz(i: number, j: number) {
     this.openSubject.next({ quiz: this.generateQuiz(), i, j });
   }
 
+  private shuffleArray(array: Quiz[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+}
+
   private generateQuiz(): Quiz {
+    if (!this.quizzes[this.quizIndex])
+      this.quizIndex = 0;
+
     return this.quizzes[this.quizIndex];
   }
 }

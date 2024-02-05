@@ -19,7 +19,6 @@
 
 <div class="cell" tabindex="0" (keypress)="keyPress($event)" (click)="cellClick()">
   <div class="size" *ngIf="!maze.fogMaze[i][j]">
-    <img height="64" width="64" *ngIf="cell !== cellType.exit && cell !== cellType.empty && cell !== cellType.entrance && cell !== cellType.wall && cell !== cellType.key && cell !== cellType.puzzle">
     <img [ngClass]="{'clickable': clickable}" height="64" width="64" src="assets/door.png" *ngIf="cell === cellType.exit">
     <img [ngClass]="{'clickable': clickable}" height="64" width="64" src="assets/dirt.png" *ngIf="cell === cellType.empty">
     <img [ngClass]="{'clickable': clickable}" height="64" width="64" src="assets/dirt.png" *ngIf="cell === cellType.entrance">
@@ -27,6 +26,9 @@
     <img [ngClass]="{'clickable': clickable}" height="64" width="64" src="assets/key.png" *ngIf="cell === cellType.key && !maze.hasKey">
     <img [ngClass]="{'clickable': clickable}" height="64" width="64" src="assets/dirt.png" *ngIf="cell === cellType.key && maze.hasKey">
     <img [ngClass]="{'clickable': clickable}" height="64" width="64" src="assets/puzzle.png" *ngIf="cell === cellType.puzzle">
+
+    <img [ngClass]="{'clickable': clickable}" height="64" width="64" src="assets/bonus.png" *ngIf="cell === cellType.bonus && !collectedBonus">
+    <img [ngClass]="{'clickable': clickable}" height="64" width="64" src="assets/dirt.png" *ngIf="cell === cellType.bonus && collectedBonus">
   </div>
 
   <div class="size" *ngIf="maze.fogMaze[i][j]">
