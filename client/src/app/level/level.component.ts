@@ -13,7 +13,5 @@ import { CellComponent } from '../cell/cell.component';
 export class LevelComponent {
   constructor(public maze: MazeService) {
     maze.generateMaze();
-    console.log(maze.maze);
-    console.log(maze.fogMaze);
   }
 }
