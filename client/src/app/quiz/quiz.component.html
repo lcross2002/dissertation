@@ -10,7 +10,7 @@
         <div class="question">
           {{multiQuiz.question}}
           <br><br>
-          <span class="code">{{multiQuiz.code}}</span>
+          <span class="code" *ngIf="multiQuiz.code">{{multiQuiz.code}}</span>
         </div>
         <div class="answers">
 

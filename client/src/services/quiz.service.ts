@@ -52,6 +52,39 @@ export class QuizService {
         {id: 'D', value: '/** Increment i */'}
       ],
       correctId: 'B'
+    },
+    {
+      quizType: 'multi',
+      question: 'Which is the best way of creating this variable in javascript?',
+      code: 'node',
+      answers: [
+        {id: 'A', value: 'let n; // Node'},
+        {id: 'B', value: 'let nodeForTheFileExplorerTree'},
+        {id: 'C', value: 'let node;'},
+      ],
+      correctId: 'C'
+    },
+    {
+      quizType: 'multi',
+      question: 'How should you use typescript to type a return value from a public function',
+      code: '',
+      answers: [
+        {id: 'A', value: 'Create an inline type in the function declaration'},
+        {id: 'B', value: 'Create an interface for the return type'},
+        {id: 'C', value: 'Leave out the return type colon in the function declaration'},
+      ],
+      correctId: 'B'
+    },
+    {
+      quizType: 'multi',
+      question: 'You have just fixed a bug that only occurs in a specific browser, but your implementation is unidiomatic, how should you comment it?',
+      code: '',
+      answers: [
+        {id: 'A', value: '// Safari requires this extra check to do [xyz]'},
+        {id: 'B', value: '// Safari bug'},
+        {id: 'C', value: 'Don\'t write a comment'},
+      ],
+      correctId: 'A'
     }
   ];
   
