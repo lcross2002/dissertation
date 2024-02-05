@@ -21,13 +21,19 @@ export interface IFillQuiz {
   answer: string;
 }
 
+export interface IQuiz {
+  quiz: Quiz;
+  i: number;
+  j: number
+}
+
 export type Quiz = IMultiQuiz | IFillQuiz;
 
 @Injectable({providedIn: 'root'})
 export class QuizService {
 
-  open$: Observable<Quiz>;
-  private openSubject: Subject<Quiz>;
+  open$: Observable<IQuiz>;
+  private openSubject: Subject<IQuiz>;
   private quizIndex: number = 0;
   private quizzes: Quiz[] = [
     {
@@ -48,8 +54,8 @@ export class QuizService {
     this.open$ = this.openSubject.asObservable();
   }
 
-  openQuiz() {
-    this.openSubject.next(this.generateQuiz());
+  openQuiz(i: number, j: number) {
+    this.openSubject.next({ quiz: this.generateQuiz(), i, j });
   }
 
   private generateQuiz(): Quiz {

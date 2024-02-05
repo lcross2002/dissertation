@@ -37,7 +37,7 @@ export class CellComponent {
     if (this.cell === CellType.empty) {
       this.maze.updateFog(this.i, this.j);
     } else if (this.cell === CellType.puzzle) {
-      this.quiz.openQuiz();
+      this.quiz.openQuiz(this.i, this.j);
     } else if(this.cell === CellType.key) {
       this.maze.hasKey = true;
       this.maze.clickedMaze[this.i][this.j] = true;

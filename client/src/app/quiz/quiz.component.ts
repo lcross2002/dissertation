@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, HostListener, OnDestroy } from '@angular/core';
 import { QuizService, IMultiQuiz, IFillQuiz } from '../../services/quiz.service';
 import { Subscription } from 'rxjs';
+import { CellType, MazeService } from '../../services/maze.service';
 
 @Component({
   selector: 'ccg-quiz',
@@ -16,18 +17,26 @@ export class QuizComponent implements OnDestroy {
   fillQuiz?: IFillQuiz;
   open: boolean = false;
 
+  private i?: number;
+  private j?: number;
+
   private subscription: Subscription;
 
-  constructor(public quiz: QuizService) {
+  constructor(
+    public quiz: QuizService,
+    public maze: MazeService
+  ) {
     this.subscription = this.quiz.open$.subscribe((q) => {
-      if (q.quizType === 'multi') {
-        this.multiQuiz = q;
+      if (q.quiz.quizType === 'multi') {
+        this.multiQuiz = q.quiz;
         this.fillQuiz = undefined;
-      } else if (q.quizType === 'fill') {
-        this.fillQuiz = q;
+      } else if (q.quiz.quizType === 'fill') {
+        this.fillQuiz = q.quiz;
         this.multiQuiz = undefined;
       }
 
+      this.i = q.i;
+      this.j = q.j;
       this.open = true;
     });
   }
@@ -37,7 +46,12 @@ export class QuizComponent implements OnDestroy {
   }
 
   multiClick(id: string) {
-    console.log(id);
+    if (id === this.multiQuiz?.correctId && this.i && this.j) {
+      this.maze.clickedMaze[this.i][this.j] = true;
+      this.maze.updateFog(this.i, this.j);
+      this.maze.maze[this.i][this.j] = CellType.empty;
+      this.close();
+    }
   }
 
   @HostListener('document:keydown.escape', ['$event'])
