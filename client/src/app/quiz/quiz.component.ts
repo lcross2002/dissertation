@@ -50,6 +50,7 @@ export class QuizComponent implements OnDestroy {
       this.maze.clickedMaze[this.i][this.j] = true;
       this.maze.updateFog(this.i, this.j);
       this.maze.maze[this.i][this.j] = CellType.empty;
+      this.quiz.quizIndex++;
       this.close();
     }
   }

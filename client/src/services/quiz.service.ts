@@ -32,9 +32,9 @@ export type Quiz = IMultiQuiz | IFillQuiz;
 @Injectable({providedIn: 'root'})
 export class QuizService {
 
+  quizIndex: number = 0;
   open$: Observable<IQuiz>;
   private openSubject: Subject<IQuiz>;
-  private quizIndex: number = 0;
   private quizzes: Quiz[] = [
     {
       quizType: 'multi',
