@@ -26,6 +26,7 @@ interface coord {
 
 @Injectable({providedIn: 'root'})
 export class MazeService {
+  hasKey: boolean = false;
   maze!: Maze;
   fogMaze!: FogMaze;
   clickedMaze!: ClickedMaze;
@@ -42,6 +43,7 @@ export class MazeService {
 
   generateMaze() {
     this.maze = this.maze1;
+    this.hasKey = false;
     this.generateFogMaze();
     this.generateClickedMaze();
   }
