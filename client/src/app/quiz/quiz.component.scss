@@ -105,3 +105,17 @@
 .pointer {
   cursor: pointer;
 }
+
+.hearts {
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 20px;
+  margin-right: 8px;
+}
+
+.lives {
+  margin-right: 8px;
+}

@@ -26,6 +26,15 @@
       <div *ngIf="fillQuiz">
 
       </div>
+
+      <div class="hearts">
+        <div class="lives">
+          Lives:
+        </div>
+        <div *ngFor="let heart of maze.lives">
+          <img width="32" height="32" src="assets/heart.png">
+        </div>
+      </div>
     </div>
   </div>
 </div>
