@@ -2,13 +2,24 @@
   <ccg-cell class="size" *ngFor="let cell of row; index as j" [i]="i" [j]="j" [cell]="cell"></ccg-cell>
 </div>
 
-<div class="inventory">
-  <span>Inventory:</span>
-  <div class="items">
-    <img width="32" height="32" *ngIf="maze.hasKey" src="assets/big_key.png">
-
-    <div *ngFor="let item of maze.bonus">
-      <img width="32" height="32" src="assets/big_bonus.png">
+<div class="bottom">
+  <div class="inventory">
+    <span>Inventory:</span>
+    <div class="items">
+      <img width="32" height="32" *ngIf="maze.hasKey" src="assets/big_key.png">
+  
+      <div *ngFor="let item of maze.bonus">
+        <img width="32" height="32" src="assets/big_bonus.png">
+      </div>
+    </div>
+  </div>
+  
+  <div class="inventory">
+    <span>Lives:</span>
+    <div class="items">
+      <div *ngFor="let life of maze.lives">
+        H
+      </div>
     </div>
   </div>
 </div>

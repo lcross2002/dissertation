@@ -27,6 +27,7 @@ interface coord {
 
 @Injectable({providedIn: 'root'})
 export class MazeService {
+  lives: boolean[] = [true, true, true];
   hasKey: boolean = false;
   bonus: coord[] = [];
   maze!: Maze;
@@ -35,16 +36,6 @@ export class MazeService {
 
   startLevel$: Observable<void>;
   private startLevelSubject: Subject<void>;
-
-  private maze1: Maze = [
-    [1, 1, 1, 1, 1, 3, 1],
-    [1, 5, 0, 0, 1, 0, 1],
-    [1, 1, 1, 0, 1, 0, 1],
-    [1, 6, 0, 0, 1, 0, 1],
-    [1, 1, 1, 0, 1, 0, 1],
-    [1, 4, 0, 0, 0, 0, 1],
-    [1, 1, 1, 1, 1, 2, 1]
-  ];
 
   constructor() {
     this.startLevelSubject = new Subject();
@@ -69,19 +60,19 @@ export class MazeService {
       [
         [1, 1, 1, 1, 1, 3, 1],
         [1, 5, 0, 0, 1, 0, 1],
+        [1, 1, 1, 0, 1, 4, 1],
+        [1, 6, 0, 4, 1, 0, 1],
         [1, 1, 1, 0, 1, 0, 1],
-        [1, 6, 0, 0, 1, 0, 1],
-        [1, 1, 1, 0, 1, 0, 1],
-        [1, 4, 0, 0, 0, 0, 1],
+        [1, 0, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 2, 1]
       ],
       [
         [1, 1, 1, 1, 1, 3, 1],
         [1, 5, 0, 0, 1, 4, 1],
-        [1, 1, 1, 0, 0, 0, 1],
+        [1, 1, 1, 4, 0, 0, 1],
+        [1, 6, 4, 0, 1, 0, 1],
+        [1, 1, 1, 4, 1, 0, 1],
         [1, 6, 0, 0, 1, 0, 1],
-        [1, 1, 1, 0, 1, 0, 1],
-        [1, 4, 0, 0, 1, 0, 1],
         [1, 1, 1, 1, 1, 2, 1]
       ]
     ];
@@ -194,5 +185,13 @@ export class MazeService {
       return true;
 
     return false;
+  }
+
+  subtractLife() {
+    this.lives.pop();;
+
+    if (this.lives.length === 0) {
+      // lose
+    }
   }
 }

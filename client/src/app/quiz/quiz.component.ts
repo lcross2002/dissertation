@@ -56,6 +56,7 @@ export class QuizComponent implements OnDestroy {
       this.close();
     } else {
       this.disabled.push(id);
+      this.maze.subtractLife();
     }
   }
 
