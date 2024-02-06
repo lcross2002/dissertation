@@ -9,7 +9,7 @@
       <div class="multi" *ngIf="multiQuiz">
         <div class="question">
           {{multiQuiz.question}}
-          <br><br>
+          <br *ngIf="multiQuiz.code"><br *ngIf="multiQuiz.code">
           <span class="code" *ngIf="multiQuiz.code">{{multiQuiz.code}}</span>
         </div>
         <div class="answers">
