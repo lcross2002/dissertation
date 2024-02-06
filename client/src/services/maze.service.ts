@@ -80,6 +80,15 @@ export class MazeService {
         [1, 1, 1, 1, 1, 2, 1]
       ],
       [
+        [1, 1, 1, 3, 1, 1, 1],
+        [1, 5, 4, 0, 1, 0, 1],
+        [1, 1, 1, 0, 1, 0, 1],
+        [1, 6, 4, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 0, 1],
+        [1, 6, 4, 0, 4, 0, 1],
+        [1, 1, 1, 2, 1, 1, 1]
+      ],
+      [
         [1, 1, 1, 1, 1, 3, 1],
         [1, 5, 0, 0, 1, 4, 1],
         [1, 1, 1, 4, 0, 0, 1],
@@ -185,16 +194,16 @@ export class MazeService {
     const up: coord = {i: i+1, j: j};
     const down: coord = {i: i-1, j: j};
 
-    if (this.clickedMaze[left.i][left.j])
+    if (this.clickedMaze[left.i] && this.clickedMaze[left.i][left.j])
       return true;
 
-    if (this.clickedMaze[right.i][right.j])
+    if (this.clickedMaze[right.i] && this.clickedMaze[right.i][right.j])
       return true;
 
-    if (this.clickedMaze[up.i][up.j])
+    if (this.clickedMaze[up.i] && this.clickedMaze[up.i][up.j])
       return true;
 
-    if (this.clickedMaze[down.i][down.j])
+    if (this.clickedMaze[down.i] && this.clickedMaze[down.i][down.j])
       return true;
 
     return false;
