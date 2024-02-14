@@ -6,10 +6,6 @@
   // margin: 2px;
 }
 
-.clickable {
-  filter: brightness(75%);
-}
-
 .clickable:hover {
   filter: brightness(50%);
   cursor: pointer;
