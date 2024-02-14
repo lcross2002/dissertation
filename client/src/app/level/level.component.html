@@ -1,32 +1,38 @@
-<div style="height: 64px;" *ngFor="let row of maze.maze; index as i">
-  <ccg-cell class="size" *ngFor="let cell of row; index as j" [i]="i" [j]="j" [cell]="cell"></ccg-cell>
+<div *ngIf="!maze.isBoss">
+  <div style="height: 64px;" *ngFor="let row of maze.maze; index as i">
+    <ccg-cell class="size" *ngFor="let cell of row; index as j" [i]="i" [j]="j" [cell]="cell"></ccg-cell>
+  </div>
+  
+  <div class="bottom">
+    <div class="inventory">
+      <span>Inventory:</span>
+      <div class="items">
+        <img width="32" height="32" *ngIf="maze.hasKey" src="assets/big_key.png">
+    
+        <div *ngFor="let item of maze.bonus">
+          <img width="32" height="32" src="assets/big_bonus.png">
+        </div>
+      </div>
+    </div>
+  
+    <div class="inventory">
+      <span>Score:</span>
+      <div class="items">
+        {{maze.score}}
+      </div>
+    </div>
+    
+    <div class="inventory">
+      <span>Lives:</span>
+      <div class="items">
+        <div *ngFor="let life of maze.lives">
+          <img width="32" heart="32" src="assets/heart.png">
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="bottom">
-  <div class="inventory">
-    <span>Inventory:</span>
-    <div class="items">
-      <img width="32" height="32" *ngIf="maze.hasKey" src="assets/big_key.png">
-  
-      <div *ngFor="let item of maze.bonus">
-        <img width="32" height="32" src="assets/big_bonus.png">
-      </div>
-    </div>
-  </div>
-
-  <div class="inventory">
-    <span>Score:</span>
-    <div class="items">
-      {{maze.score}}
-    </div>
-  </div>
-  
-  <div class="inventory">
-    <span>Lives:</span>
-    <div class="items">
-      <div *ngFor="let life of maze.lives">
-        <img width="32" heart="32" src="assets/heart.png">
-      </div>
-    </div>
-  </div>
+<div *ngIf="maze.isBoss">
+  <ccg-boss></ccg-boss>
 </div>

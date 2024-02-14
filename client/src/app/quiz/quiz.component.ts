@@ -52,12 +52,17 @@ export class QuizComponent implements OnDestroy {
 
   multiClick(id: string) {
     if (id === this.multiQuiz?.correctId && this.i && this.j) {
-      this.maze.clickedMaze[this.i][this.j] = true;
+      if (this.maze.clickedMaze[this.i] && this.maze.clickedMaze[this.i][this.j])
+        this.maze.clickedMaze[this.i][this.j] = true;
+
       this.maze.updateFog(this.i, this.j);
-      this.maze.maze[this.i][this.j] = CellType.empty;
+      
+      if (this.maze.maze[this.i] && this.maze.maze[this.i][this.j])
+        this.maze.maze[this.i][this.j] = CellType.empty;
+
       this.quiz.quizIndex++;
       this.maze.increaseScore(5);
-      this.close();
+      this.quiz.closeQuiz();
     } else {
       this.disabled.push(id);
       this.maze.subtractLife();

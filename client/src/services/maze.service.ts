@@ -29,6 +29,7 @@ interface coord {
 
 @Injectable({providedIn: 'root'})
 export class MazeService {
+  isBoss: boolean = false;
   score: number = 0;
   maxScore: number = 250;
   lives: boolean[] = [true, true, true];
@@ -50,6 +51,7 @@ export class MazeService {
   }
 
   startGame() {
+    this.isBoss = false;
     this.score = 0;
     this.lives = [true, true, true];
     this.startLevel();
@@ -168,6 +170,9 @@ export class MazeService {
   }
 
   updateFog(i: number, j: number) {
+    if (i < 0 || j < 0)
+      return;
+
     this.clickedMaze[i][j] = true;
 
     const left: coord = {i: i, j: j-1};
@@ -225,13 +230,10 @@ export class MazeService {
     this.score += val;
 
     if (this.score >= this.maxScore)
-      this.win();
+      this.startBoss();
   }
 
-  private win() {
-    this.end.end({
-      outcome: 'win',
-      score: this.score
-    });
+  private startBoss() {
+    this.isBoss = true;
   }
 }
