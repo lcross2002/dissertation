@@ -10,3 +10,25 @@
   filter: brightness(50%);
   cursor: pointer;
 }
+
+.header {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  font-size: 32px;
+  width: 100%;
+  justify-content: center;
+  background-color: var(--off-off-light);
+  // border-radius: 16px 0 0 0;
+
+  padding-left: 12px;
+  padding-right: 12px;
+
+  margin-bottom: 16px;
+}
+
+.boss {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

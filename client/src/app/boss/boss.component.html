@@ -1,5 +1,13 @@
-<div class="cell" tabindex="0" (keypress)="keyPress($event)" (click)="bossClick()" *ngIf="hp > 0">
-  <img width="128" height="128" class="clickable" src="assets/boss.png" *ngIf="hp === 3">
-  <img width="128" height="128" class="clickable" src="assets/boss_2.png" *ngIf="hp === 2">
-  <img width="128" height="128" class="clickable" src="assets/boss_3.png" *ngIf="hp === 1">
+<div class="boss">
+  <div class="header">
+    <span *ngIf="hp === 3">Defeat the boss!</span>
+    <span *ngIf="hp === 2">Keep going!</span>
+    <span *ngIf="hp === 1">Almost there!</span>
+  </div>
+
+  <div class="cell" tabindex="0" (keypress)="keyPress($event)" (click)="bossClick()" *ngIf="hp > 0">
+    <img width="128" height="128" class="clickable" src="assets/boss.png" *ngIf="hp === 3">
+    <img width="128" height="128" class="clickable" src="assets/boss_2.png" *ngIf="hp === 2">
+    <img width="128" height="128" class="clickable" src="assets/boss_3.png" *ngIf="hp === 1">
+  </div>
 </div>
