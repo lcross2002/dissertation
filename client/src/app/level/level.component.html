@@ -1,4 +1,5 @@
 <div class="bar" *ngIf="!maze.isBoss">
+  <img width="32" height="32" src="assets/big_bonus.png">
   <span class="prog-label">Progress: </span>
   <progress class="prog" [value]="maze.score" [max]="maze.maxScore"></progress>
 </div>
