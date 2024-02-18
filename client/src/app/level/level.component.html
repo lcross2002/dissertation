@@ -1,3 +1,8 @@
+<div class="bar" *ngIf="!maze.isBoss">
+  <span class="prog-label">Progress: </span>
+  <progress class="prog" [value]="maze.score" [max]="maze.maxScore"></progress>
+</div>
+
 <div *ngIf="!maze.isBoss">
   <div style="height: 64px;" *ngFor="let row of maze.maze; index as i">
     <ccg-cell class="size" *ngFor="let cell of row; index as j" [i]="i" [j]="j" [cell]="cell"></ccg-cell>
