@@ -4,6 +4,9 @@
   </div>
   <span class="prog-label">Progress: </span>
   <progress class="prog" [value]="maze.score" [max]="maze.maxScore"></progress>
+  <div class="streak">
+    {{maze.streak}}
+  </div>
 </div>
 
 <div *ngIf="!maze.isBoss">

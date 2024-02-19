@@ -31,6 +31,7 @@ interface coord {
 export class MazeService {
   isBoss: boolean = false;
   score: number = 0;
+  streak: number = 0;
   maxScore: number = 250;
   lives: boolean[] = [true, true, true];
   hasKey: boolean = false;
@@ -53,6 +54,7 @@ export class MazeService {
   startGame() {
     this.isBoss = false;
     this.score = 0;
+    this.streak = 0;
     this.lives = [true, true, true];
     this.startLevel();
   }
@@ -226,8 +228,11 @@ export class MazeService {
     }
   }
 
-  increaseScore(val: number) {
+  increaseScore(val: number, applyStreak?: boolean) {
     this.score += val;
+
+    if (applyStreak)
+      this.score += Math.ceil(val * this.streak * 0.1);
 
     if (this.score >= this.maxScore)
       this.startBoss();

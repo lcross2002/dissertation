@@ -45,7 +45,7 @@ export class CellComponent {
       this.maze.updateFog(this.i, this.j);
     } else if (this.cell === CellType.exit) {
       if (this.maze.hasKey) {
-        this.maze.increaseScore(10);
+        this.maze.increaseScore(10, true);
         this.maze.startLevel();
       }
     } else if (this.cell === CellType.bonus) {

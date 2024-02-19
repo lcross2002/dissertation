@@ -61,10 +61,12 @@ export class QuizComponent implements OnDestroy {
         this.maze.maze[this.i][this.j] = CellType.empty;
 
       this.quiz.quizIndex++;
-      this.maze.increaseScore(5);
+      this.maze.streak++;
+      this.maze.increaseScore(5, true);
       this.quiz.closeQuiz();
     } else {
       this.disabled.push(id);
+      this.maze.streak = 0;
       this.maze.subtractLife();
     }
   }
