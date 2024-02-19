@@ -56,6 +56,7 @@ export class MazeService {
     this.score = 0;
     this.streak = 0;
     this.lives = [true, true, true];
+    this.quiz.shuffleQuizzes();
     this.startLevel();
   }
 

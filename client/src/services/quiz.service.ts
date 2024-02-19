@@ -116,12 +116,16 @@ export class QuizService {
     this.closeSubject.next();
   }
 
+  public shuffleQuizzes() {
+    this.shuffleArray(this.quizzes);
+  }
+
   private shuffleArray(array: Quiz[]) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
-}
+  }
 
   private generateQuiz(): Quiz {
     if (!this.quizzes[this.quizIndex])
