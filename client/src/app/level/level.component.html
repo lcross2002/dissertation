@@ -1,10 +1,10 @@
 <div class="bar" *ngIf="!maze.isBoss">
-  <div class="timer">
+  <div class="timer" title="timer">
     {{time}}
   </div>
   <span class="prog-label">Progress: </span>
   <progress class="prog" [value]="maze.score" [max]="maze.maxScore"></progress>
-  <div class="streak">
+  <div class="streak" title="streak">
     {{maze.streak}}
   </div>
 </div>
