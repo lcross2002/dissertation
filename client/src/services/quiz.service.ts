@@ -13,6 +13,7 @@ export interface IMultiQuiz {
   code: string;
   answers: IMultiAnswer[];
   correctId: string;
+  explain: string;
 }
 
 export interface IFillQuiz {
@@ -20,6 +21,7 @@ export interface IFillQuiz {
   before: string;
   after: string;
   answer: string;
+  explain: string;
 }
 
 export interface IQuiz {
@@ -32,6 +34,10 @@ export type Quiz = IMultiQuiz | IFillQuiz;
 
 @Injectable({providedIn: 'root'})
 export class QuizService {
+
+  get currentExplain() {
+    return this.quizzes[this.quizIndex].explain;
+  }
 
   quizIndex: number = 0;
   open$: Observable<IQuiz>;
@@ -51,7 +57,8 @@ export class QuizService {
         {id: 'C', value: '// Increase the i value by 1'},
         {id: 'D', value: '/** Increment i */'}
       ],
-      correctId: 'B'
+      correctId: 'B',
+      explain: 'You should not add comments to self-explanatory lines of code'
     },
     {
       quizType: 'multi',
@@ -62,7 +69,8 @@ export class QuizService {
         {id: 'B', value: 'let nodeForTheFileExplorerTree'},
         {id: 'C', value: 'let node;'},
       ],
-      correctId: 'C'
+      correctId: 'C',
+      explain: 'variable names should be simple but still give enough information'
     },
     {
       quizType: 'multi',
@@ -73,7 +81,8 @@ export class QuizService {
         {id: 'B', value: 'Create an interface for the return type'},
         {id: 'C', value: 'Leave out the return type colon in the function declaration'},
       ],
-      correctId: 'B'
+      correctId: 'B',
+      explain: 'interfaces are the best option so that those who use the public function can utilise it'
     },
     {
       quizType: 'multi',
@@ -84,7 +93,8 @@ export class QuizService {
         {id: 'B', value: '// Safari bug'},
         {id: 'C', value: 'Don\'t write a comment'},
       ],
-      correctId: 'A'
+      correctId: 'A',
+      explain: 'unidiomatic fixes for bugs should be properly commented to ensure maintainability'
     }
   ];
   
