@@ -39,3 +39,16 @@
   margin-right: 4px;
   margin-left: 4px;
 }
+
+.timer {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: var(--dark);
+  padding-left: 4px;
+  padding-right: 4px;
+  border-radius: 1rem;
+}
