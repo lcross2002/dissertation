@@ -95,6 +95,69 @@ export class QuizService {
       ],
       correctId: 'A',
       explain: 'unidiomatic fixes for bugs should be properly commented to ensure maintainability'
+    },
+    {
+      quizType: 'multi',
+      question: 'Which of these CSS classes is best for a navigation bar item icon',
+      code: '',
+      answers: [
+        {id: 'A', value: 'navItemIcon'},
+        {id: 'B', value: 'nav-item-con'},
+        {id: 'C', value: 'icon'},
+        {id: 'D', value: 'nav__item--icon'},
+      ],
+      correctId: 'D',
+      explain: 'the prefered css class naming method is Block Element Modifier'
+    },
+    {
+      quizType: 'multi',
+      question: 'Which of these ways is a bad way of overloading a function',
+      code: '',
+      answers: [
+        {id: 'A', value: 'mult(one: number, two: number, three?: number): number {}'},
+        {id: 'B', value: 'mult(one: number, two: number, three: number): number {}'},
+        {id: 'C', value: 'both are bad'}
+      ],
+      correctId: 'C',
+      explain: 'there is no need to overload this function, just implement the logic for "three" in the original function'
+    },
+    {
+      quizType: 'multi',
+      question: 'which is the best method of creating function declarations for a parameter that is two types',
+      code: '',
+      answers: [
+        {id: 'A', value: 'use a union type'},
+        {id: 'B', value: 'create overloads of the function'},
+        {id: 'C', value: 'use any'},
+        {id: 'D', value: 'use unknown and do type checking inside the function'},
+      ],
+      correctId: 'A',
+      explain: 'best practice is to use union types'
+    },
+    {
+      quizType: 'multi',
+      question: 'What is the correct return type for a function that doesn\'t have a return value',
+      code: '',
+      answers: [
+        {id: 'A', value: 'any'},
+        {id: 'B', value: 'void'},
+        {id: 'C', value: 'unknown'},
+        {id: 'D', value: 'undefined'},
+      ],
+      correctId: 'B',
+      explain: 'void stops anyone incorrectly using a return value that does not exist'
+    },
+    {
+      quizType: 'multi',
+      question: 'Which is the best way to name this variable x',
+      code: 'let x = user.firstName; let y = user.lastName;',
+      answers: [
+        {id: 'A', value: 'name'},
+        {id: 'B', value: 'fname'},
+        {id: 'C', value: 'tmp'},
+      ],
+      correctId: 'B',
+      explain: 'need to differentiate between the names, and they need to be descriptive'
     }
   ];
   

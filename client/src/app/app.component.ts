@@ -22,7 +22,7 @@ export class AppComponent implements OnDestroy {
   private subscription: Subscription;
 
   constructor(private maze: MazeService) {
-    this.scoreForm = new FormControl(250, [Validators.required, Validators.pattern("^[0-9]*$")]);
+    this.scoreForm = new FormControl(150, [Validators.required, Validators.pattern("^[0-9]*$")]);
 
     this.subscription = this.maze.startLevel$.subscribe(() => {
       this.play = false;
@@ -35,7 +35,7 @@ export class AppComponent implements OnDestroy {
 
   start() {
     this.play = true;
-    this.maze.maxScore = this.scoreForm.value ?? 250;
+    this.maze.maxScore = this.scoreForm.value ?? 150;
   }
 
   ngOnDestroy() {
