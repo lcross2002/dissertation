@@ -25,7 +25,7 @@ export class LevelComponent implements OnDestroy {
     private end: EndService
   ) {
     maze.generateMaze();
-    this.time = 60;
+    this.time = 150;
 
     const timer = interval(1000);
 
